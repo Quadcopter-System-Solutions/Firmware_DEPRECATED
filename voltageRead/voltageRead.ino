@@ -18,9 +18,9 @@ float voltageThree = 0; // variable to store the voltage at cell 3
 
 void setup() {
   // declaring Analog Pins 0,1,2 as input pins
-  pinMode(cellOne, INPUT);
-  pinMode(cellTwo, INPUT);
-  pinMode(cellThree, INPUT);
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT);
+  pinMode(A2, INPUT);
 }
 
 void loop() {
