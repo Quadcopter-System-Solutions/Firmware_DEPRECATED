@@ -1,10 +1,10 @@
-#ifndef FLIGHT
-#define FLIGHT
+#ifndef GYRO
+#define GYRO
 
 #include "arduino.h"
 
 extern u16 errorCode;
 
-void initMotors(void);
+void initGYRO(void);
 
 #endif

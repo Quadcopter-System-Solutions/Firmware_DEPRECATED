@@ -4,5 +4,3 @@ void initComms(void)
 {
     
 }
-
-
