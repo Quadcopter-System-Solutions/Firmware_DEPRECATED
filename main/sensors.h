@@ -6,5 +6,6 @@
 extern u16 errorCode;
 
 void initSensors(void);
+void initAltimeter(void);
 
 #endif

@@ -5,6 +5,7 @@
 #include "flight.h"
 #include "log.h"
 #include "faultHandling.h"
+#include "voltageRead.h"
 
 u16 errorCode = 0x0000;
 
