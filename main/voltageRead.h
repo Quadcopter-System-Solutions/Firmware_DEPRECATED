@@ -7,7 +7,8 @@
   Miguel Manguerra
 */
 
-#ifndef voltageRead.h
+#ifndef VOLTAGEREAD
+#define VOLTAGEREAD
 
 #define cellOneRatio 1
 #define cellTwoRatio 1030/470

@@ -9,11 +9,20 @@
 
 #include "sensors.h"
 #include "Adafruit_BMP280.h"
+#include "Adafruit_L3GD20_U.h"
 
-u16 errorCode = 0x0000;
+Adafruit_L3GD20 gyro;
 
 void initSensors(void){
     
+}
+
+void initGyro(void){
+  if (!gyro.begin())
+  {
+    errorCode |= 0x0002;
+    return;
+  }
 }
 
 void initAltimeter(void){
