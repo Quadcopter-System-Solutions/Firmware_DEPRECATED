@@ -9,7 +9,9 @@
 
 #include "sensors.h"
 #include "Adafruit_BMP280.h"
+#include "Adafruit_L3GD20_U.h"
 
+Adafruit_L3GD20 gyro;
 //global variables to store important data used in other files
 float pressure;
 float currentAltitude;
@@ -23,6 +25,14 @@ Adafruit_Sensor *altimeterPressure = altimeter.getPressureSensor();
 
 void initSensors(void){
     
+}
+
+void initGyro(void){
+  if (!gyro.begin())
+  {
+    errorCode |= 0x0002;
+    return;
+  }
 }
 
 void initAltimeter(void){
