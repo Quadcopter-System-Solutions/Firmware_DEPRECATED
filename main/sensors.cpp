@@ -9,30 +9,46 @@
 
 #include "sensors.h"
 #include "Adafruit_BMP280.h"
-#include "Adafruit_L3GD20_U.h"
+#include "LSM6DSLSensor.h"
 
-Adafruit_L3GD20 gyro;
+
 //global variables to store important data used in other files
 float pressure;
 float currentAltitude;
 float temperature;
 float initialAltitude;
 
-//initial declaration of altimeter object
+//initial declaration of sensor objects
 Adafruit_BMP280 altimeter;
 Adafruit_Sensor *altimeterTemperature = altimeter.getTemperatureSensor();
 Adafruit_Sensor *altimeterPressure = altimeter.getPressureSensor();
 
+LSM6DSLSensor *gyro;
+TwoWire *gyroi2c;
+
 void initSensors(void){
-    
+
 }
 
 void initGyro(void){
-  if (!gyro.begin())
-  {
-    errorCode |= 0x0002;
-    return;
-  }
+  gyroi2c = new TwoWire();
+  gyroi2c->begin();
+
+  gyro = new LSM6DSLSensor(gyroi2c, LSM6DSL_ACC_GYRO_I2C_ADDRESS_LOW);
+  gyro->Enable_X();
+  gyro->Enable_G();
+}
+
+u32* getGyro(void){
+  u32 reading[3];
+  gyro->Get_G_Axes(reading); 
+  return reading;
+}
+
+u32* getAccel(void){
+  u32 reading[3];
+  gyro->Get_X_Axes(reading); 
+  return reading;
 }
 
 void initAltimeter(void){
