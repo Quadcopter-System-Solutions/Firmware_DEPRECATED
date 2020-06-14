@@ -40,16 +40,22 @@ void initGyro(void){
   gyro->Enable_G();
 }
 
-u32* getGyro(void){
+struct sensorReading getGyro(void){
   u32 reading[3];
-  gyro->Get_G_Axes(reading); 
-  return reading;
+  gyro->Get_G_Axes(reading);
+
+  struct sensorReading result = {reading[0], reading[1], reading[2]};
+  
+  return result;
 }
 
-u32* getAccel(void){
+struct sensorReading getAccel(void){
   u32 reading[3];
-  gyro->Get_X_Axes(reading); 
-  return reading;
+  gyro->Get_X_Axes(reading);
+
+  struct sensorReading result = {reading[0], reading[1], reading[2]};
+   
+  return result;
 }
 
 void initAltimeter(void){

@@ -1,10 +1,9 @@
 #include "sensors.h"
 
-float pressure;
-float currentAltitude;
-float temperature;
-u32* gyro;
-u32* accel;
+extern float pressure;
+extern float currentAltitude;
+extern float temperature;
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -35,15 +34,25 @@ void loop() {
 
   delay(1000);
 
-  gyro = getGyro();
-  accel = getAccel();
+struct sensorReading gyro = getGyro();
+struct sensorReading accel = getAccel();
   
-  Serial.print(F("Gyro = "));
-  Serial.print(gyro);
+  Serial.print(F("Gyro: "));
+  Serial.print("X: ");
+  Serial.print(gyro.x);
+  Serial.print("Y: ");
+  Serial.print(gyro.y);
+  Serial.print("Z: ");
+  Serial.print(gyro.z);
   Serial.println(" units???");
 
-  Serial.print(F("Altitude = "));
-  Serial.print(accel);
+  Serial.print(F("Accelerometer: "));
+  Serial.print("X: ");
+  Serial.print(accel.x);
+  Serial.print("Y: ");
+  Serial.print(accel.y);
+  Serial.print("Z: ");
+  Serial.print(accel.z);
   Serial.println(" units???");
 
   delay(1000);

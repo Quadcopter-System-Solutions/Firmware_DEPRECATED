@@ -3,6 +3,13 @@
 
 #include "arduino.h"
 
+struct sensorReading
+{
+  u32 x;
+  u32 y;
+  u32 z;
+};
+
 extern u16 errorCode;
 
 void initSensors(void);
@@ -11,7 +18,7 @@ void initGyro(void);
 float getTemperature(void);
 float getPressure(void);
 float getAltitude(void);
-u32* getAccel(void);
-u32* getGyro(void);
+struct sensorReading getAccel(void);
+struct sensorReading getGyro(void);
 
 #endif
