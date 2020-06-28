@@ -4,17 +4,29 @@ extern float pressure;
 extern float currentAltitude;
 extern float temperature;
 
+#define RED A3
+#define GREEN A6
+#define BLUE A7
+
 
 void setup() {
   // put your setup code here, to run once:
   initSensors();
   Serial.begin(9600);
   Serial.println("Begin");
+  pinMode(RED, OUTPUT);
+  pinMode(GREEN, OUTPUT);
+  pinMode(BLUE, OUTPUT);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   delay(1000);
+  
+  analogWrite(RED, 255);
+  analogWrite(GREEN, 255);
+  analogWrite(BLUE, 255);
+  
   pressure = getPressure();
   currentAltitude = getAltitude();
   temperature = getTemperature();
@@ -55,6 +67,10 @@ struct sensorReading accel = getAccel();
   Serial.print(accel.z);
   Serial.println(" units???");
 
+
+  analogWrite(RED, 0);
+  analogWrite(GREEN, 0);
+  analogWrite(BLUE, 0);
   delay(1000);
   
 }
