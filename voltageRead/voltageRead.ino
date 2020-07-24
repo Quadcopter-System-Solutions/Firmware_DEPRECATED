@@ -18,6 +18,8 @@ float voltageThree = 0; // variable to store the voltage at cell 3
 
 void setup() {
   // declaring Analog Pins 0,1,2 as input pins
+  Serial.begin(9600);
+  Serial.print("Begin");
   pinMode(A0, INPUT);
   pinMode(A1, INPUT);
   pinMode(A2, INPUT);
@@ -28,14 +30,20 @@ void loop() {
   delay(1000);
   
   voltageOne = getCellOne();
+  Serial.print(voltageOne);
+  Serial.print("\n");
   
   delay(1000);
   
   voltageTwo = getCellTwo();
+  Serial.print(voltageTwo);
+  Serial.print("\n");
   
   delay(1000);
   
   voltageThree = getCellThree();
+  Serial.print(voltageThree);
+  Serial.print("\n");
 
   delay(1000);
 

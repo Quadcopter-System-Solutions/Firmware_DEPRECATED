@@ -27,7 +27,6 @@ LSM6DSLSensor *gyro;
 TwoWire *gyroi2c;
 
 void initSensors(void){
-  initGyro();
   initAltimeter();
 }
 
@@ -61,11 +60,12 @@ struct sensorReading getAccel(void){
 void initAltimeter(void){
 
   //initial declarations of variables to store important information
-  float seaLevelBarometricPressure = 1013.25; // in hPa which is mean sea level pressure (might have to change depending on where we are
+  float seaLevelBarometricPressure = 1013.25; // in hPa which is mean sea level pressure (might have to change depending on where we are)
 
   //check to see if altimeter is connected
   if(!altimeter.begin()){
     //add line here to flag an error if no altimeter is connected
+    Serial.println("Stuck");
   }
 
   //initializing specific altimeter settings
