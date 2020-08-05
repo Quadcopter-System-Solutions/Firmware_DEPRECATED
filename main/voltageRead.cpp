@@ -9,6 +9,11 @@
 #include "voltageRead.h"
 #include "arduino.h"
 
+//global variables to store important data used in other files
+float cellOne;
+float cellTwo;
+float cellThree;
+
 float getCellOne(void){
   float sensorValue = analogRead(A0);
   return sensorValue * ADCconversion * cellOneRatio;

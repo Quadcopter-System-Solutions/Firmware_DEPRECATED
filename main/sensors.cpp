@@ -17,6 +17,8 @@ float pressure;
 float currentAltitude;
 float temperature;
 float initialAltitude;
+u32* gyroReadings;
+u32* accelReadings;
 
 //initial declaration of sensor objects
 Adafruit_BMP280 altimeter;

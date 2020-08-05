@@ -8,6 +8,15 @@
 #include "voltageRead.h"
 
 u16 errorCode = 0x0000;
+extern float pressure;
+extern float currentAltitude;
+extern float temperature;
+extern float initialAltitude;
+extern u32* gyroReadings;
+extern u32* accelReadings;
+extern float cellOne;
+extern float cellTwo;
+extern float cellThree;
 
 #define stepperPhase1 0
 #define stepperPhase2 1
@@ -28,10 +37,18 @@ u16 errorCode = 0x0000;
 #define voltageRegulatorEnable 7
 #define rfChipSelect 10
 
-#define 
+void updateGlobalVariables(){
+  cellOne = getCellOne();
+  cellTwo = getCellTwo();
+  cellThree = getCellThree();
+  accelReadings = getAccel();
+  gyroReadings = getGyro();
+  temperature = getTemperature();
+  pressure = getPressure();
+  currentAltitude = getAltitude();
+}
 
 void setup() {
-
   pinMode(battCell1, INPUT);
   pinMode(battCell2, INPUT);
   pinMode(battCell3, INPUT);
